@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:istemanipalapp/logic/models/User.dart';
+import 'package:istemanipalapp/services/dialogService.dart';
 import 'package:istemanipalapp/services/locator.dart';
 import 'package:istemanipalapp/services/storageService.dart';
 import 'package:istemanipalapp/services/api.dart';
@@ -17,14 +18,12 @@ class AuthViewModel with ChangeNotifier {
   String _token;
   String _headers;
   bool _isFetchingData = false;
-  String _errorMessage;
 
   //getters
   User get user => _user;
   Status get status => _status;
   String get token => _token;
   bool get isFetchingData => _isFetchingData;
-  String get errorMessage => _errorMessage;
   String get headers => _headers;
 
   AuthViewModel.initialize() {
@@ -35,11 +34,6 @@ class AuthViewModel with ChangeNotifier {
   _setToken(value) {
     _token = value;
     _headers = "Token $_token";
-    notifyListeners();
-  }
-
-  _setErrorMessage(value) {
-    _errorMessage = value;
     notifyListeners();
   }
 
@@ -89,7 +83,7 @@ class AuthViewModel with ChangeNotifier {
       _setStatus(Status.Authenticated);
       _setFetchingData(false);
     } else {
-      _setErrorMessage(userData['error']);
+      locator<DialogService>().showAlertDialog('Error', userData['error']);
       _setFetchingData(false);
     }
   }
@@ -104,7 +98,7 @@ class AuthViewModel with ChangeNotifier {
       _setStatus(Status.Authenticated);
       _setFetchingData(false);
     } else {
-      _setErrorMessage(userData['error']);
+      locator<DialogService>().showAlertDialog('Error', userData['error']);
       _setFetchingData(false);
     }
   }

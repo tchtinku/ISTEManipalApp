@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
         StreamProvider<ThemeData>(
             create: (context) => locator<ThemeManager>().theme),
         ChangeNotifierProvider.value(
-          value: AuthViewModel.initialize(),
+          value: locator<AuthViewModel>(),
         ),
         ChangeNotifierProvider.value(
-          value: BlogViewModel.initialize(),
+          value: locator<BlogViewModel>(),
         ),
       ],
       child: Consumer<ThemeData>(

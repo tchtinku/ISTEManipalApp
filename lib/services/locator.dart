@@ -20,6 +20,6 @@ void setupLocator() {
   locator.registerLazySingleton(() => DialogService());
 
   //viewModels
-  locator.registerLazySingleton(() => AuthViewModel());
-  locator.registerLazySingleton(() => BlogViewModel());
+  locator.registerLazySingleton(() => AuthViewModel.initialize());
+  locator.registerLazySingleton(() => BlogViewModel.initialize());
 }

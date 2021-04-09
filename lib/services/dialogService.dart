@@ -7,6 +7,7 @@ class DialogService {
     // flutter defined function
     showDialog(
       context: locator<NavigationService>().navigatorKey.currentContext,
+      barrierDismissible: true,
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
@@ -15,7 +16,7 @@ class DialogService {
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("Close"),
+              child: new Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },

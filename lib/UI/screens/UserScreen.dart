@@ -43,7 +43,7 @@ class UserScreen extends StatelessWidget {
                     onPressed: () {
                       locator<NavigationService>().navigateTo(routes.login);
                     },
-                    child: Text("new screen"),
+                    child: Text("Login"),
                   ),
                 ],
               ),
