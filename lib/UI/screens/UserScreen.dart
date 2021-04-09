@@ -15,7 +15,7 @@ class UserScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Profile"),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: (viewModel.status == Status.Authenticated)
           ? Center(
               child: Column(

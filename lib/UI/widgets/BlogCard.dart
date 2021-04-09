@@ -21,6 +21,7 @@ class BlogsCard extends StatelessWidget {
           launchUrl(blog.postUrl);
         },
         child: Container(
+          color: Theme.of(context).cardColor,
           width: MediaQuery.of(context).size.width * 0.8,
           padding: EdgeInsets.all(16.0),
           child: Row(
