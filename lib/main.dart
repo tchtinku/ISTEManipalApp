@@ -28,16 +28,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: locator<AuthViewModel>(),
         ),
-        ChangeNotifierProvider.value(
-          value: locator<BlogViewModel>(),
-        ),
       ],
       child: Consumer<ThemeData>(
         builder: (context, theme, child) => MaterialApp(
           title: 'Flutter Demo',
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
-          initialRoute: routes.home,
+          initialRoute: routes.HOME,
           onGenerateRoute: RouteGenerator.generateRoute,
         ),
       ),

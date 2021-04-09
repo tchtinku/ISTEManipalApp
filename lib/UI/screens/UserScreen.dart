@@ -10,13 +10,13 @@ import '../../consts/routes.dart' as routes;
 class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var model = Provider.of<AuthViewModel>(context, listen: true);
+    var viewModel = Provider.of<AuthViewModel>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         title: Text("Profile"),
       ),
       backgroundColor: Colors.white,
-      body: (model.status == Status.Authenticated)
+      body: (viewModel.status == Status.Authenticated)
           ? Center(
               child: Column(
                 children: <Widget>[
@@ -24,9 +24,9 @@ class UserScreen extends StatelessWidget {
                     'Welcome',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
-                  Text(model.user.firstName),
-                  Text("username: ${model.user.username}"),
-                  Text("token: ${model.token}"),
+                  Text(viewModel.user.firstName),
+                  Text("username: ${viewModel.user.username}"),
+                  Text("token: ${viewModel.token}"),
                   FlatButton(
                     onPressed: () {
                       locator<ThemeManager>().toggleLightAndDark();
@@ -35,13 +35,13 @@ class UserScreen extends StatelessWidget {
                   ),
                   FlatButton(
                     onPressed: () {
-                      model.logOut();
+                      viewModel.logOut();
                     },
                     child: Text("Logout"),
                   ),
                   FlatButton(
                     onPressed: () {
-                      locator<NavigationService>().navigateTo(routes.login);
+                      locator<NavigationService>().navigateTo(routes.LOGIN);
                     },
                     child: Text("Login"),
                   ),

@@ -12,7 +12,9 @@ class BlogApi {
 
   //for registering users
   Future<dynamic> fetchBlogs(page, size) async {
-    final apiUrl = url + 'blogPosts?page=$page?&size=$size';
+    //todo: implement pagination later
+    // final apiUrl = url + 'blogPosts?page=$page?&size=$size';
+    final apiUrl = url + 'blogPosts';
     var response;
     try {
       response = await http.get(apiUrl);

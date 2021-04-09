@@ -10,14 +10,14 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case routes.home:
+      case routes.HOME:
         return MaterialPageRoute(builder: (_) => Home());
-      case routes.blog:
+      case routes.BLOG:
         return MaterialPageRoute(
           builder: (_) => BlogScreen(),
         );
 
-      case routes.login:
+      case routes.LOGIN:
         return MaterialPageRoute(
           builder: (_) => LoginScreen(),
         );

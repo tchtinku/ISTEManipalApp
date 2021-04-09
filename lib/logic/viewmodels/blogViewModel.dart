@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:istemanipalapp/logic/models/Blog.dart';
-import 'package:istemanipalapp/logic/viewmodels/authViewModel.dart';
 import 'package:istemanipalapp/services/dialogService.dart';
 import 'package:istemanipalapp/services/locator.dart';
 import 'package:istemanipalapp/services/blogApi.dart';
