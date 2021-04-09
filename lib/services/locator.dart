@@ -16,7 +16,7 @@ void setupLocator() {
   locator.registerLazySingleton(() => Api());
   locator.registerLazySingleton(() => BlogApi());
   locator.registerLazySingleton(() => StorageService());
-  locator.registerLazySingleton<ThemeManager>(() => ThemeManager());
+  locator.registerLazySingleton<ThemeManager>(() => ThemeManager.initialize());
   locator.registerLazySingleton(() => DialogService());
 
   //viewModels

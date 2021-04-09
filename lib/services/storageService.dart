@@ -19,4 +19,17 @@ class StorageService {
   Future<void> deleteAllData() async {
     await storage.deleteAll();
   }
+
+  //for storing theme related info
+  Future<void> storeThemeIndex(index) async {
+    await storage.write(key: 'themeIndex', value: index.toString());
+  }
+
+  Future<int> getThemeIndex() async {
+    String themeIndex = await storage.read(key: 'themeIndex');
+    if (themeIndex == null) {
+      return 0;
+    }
+    return int.parse(themeIndex);
+  }
 }
