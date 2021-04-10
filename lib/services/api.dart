@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Api {
-  final String url = "https://test.istemanipal.com/";
+  final String baseUrl = "https://test.istemanipal.com/";
   var networkError = {
     'success': false,
     'error': "Network Error.",
@@ -13,7 +13,7 @@ class Api {
   //for registering users
   Future<dynamic> registerUser(
       username, email, firstName, lastName, password, password2) async {
-    final apiUrl = url + 'api/register';
+    final apiUrl = baseUrl + 'api/register';
     var response, responseStatus;
     try {
       response = await http.post(apiUrl, body: {
@@ -47,7 +47,7 @@ class Api {
 
   //for login user
   Future<dynamic> loginUser(username, password) async {
-    final apiUrl = url + 'api/login';
+    final apiUrl = baseUrl + 'api/login';
     var response, responseStatus;
     try {
       response = await http.post(apiUrl, body: {
@@ -77,6 +77,19 @@ class Api {
         'error': "Your username or password is incorrect. Could not login.",
       };
       return error;
+    }
+  }
+
+  Future<dynamic> fetchCategories() async {
+    final url = baseUrl + "api/category";
+
+    try {
+      http.Response resp = await http.get(url);
+
+      Map mappedResponse = jsonDecode(resp.body);
+      return mappedResponse;
+    } catch (e) {
+      return networkError;
     }
   }
 }

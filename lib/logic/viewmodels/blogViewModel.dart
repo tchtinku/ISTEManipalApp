@@ -10,7 +10,7 @@ class BlogViewModel with ChangeNotifier {
   //making instace of web api and storage services to use their function
   var blogApi = locator<BlogApi>();
 
-  List<Blog> _blogs = List<Blog>();
+  List<Blog> _blogs = [];
   bool _isFetchingData = false;
   int _pageNum = 1;
   int _size = 20;
