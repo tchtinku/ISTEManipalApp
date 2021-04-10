@@ -14,10 +14,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var model = Provider.of<AuthViewModel>(context, listen: true);
-    if (model.status == Status.Unauthenticated) {
+    var viewModel = Provider.of<AuthViewModel>(context, listen: true);
+    if (viewModel.status == Status.Unauthenticated) {
       return Scaffold(
-        // backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
                       )),
                 ),
               ),
-              (model.status == Status.Authenticated)
+              (viewModel.status == Status.Authenticated)
                   ? Text('logged in')
                   : Text('Logged out'), // TODO: remove later,
               Padding(
@@ -75,10 +75,10 @@ class LoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
                   onPressed: () {
-                    model.login(
+                    viewModel.login(
                         _usernameController.text, _passwordController.text);
                   },
-                  child: !model.isFetchingData
+                  child: !viewModel.isFetchingData
                       ? Text(
                           'Login',
                           style: TextStyle(color: Colors.white, fontSize: 25),

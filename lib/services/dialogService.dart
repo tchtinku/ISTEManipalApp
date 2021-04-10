@@ -15,7 +15,7 @@ class DialogService {
           content: Text(message),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-            new FlatButton(
+            new TextButton(
               child: new Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();

@@ -28,10 +28,8 @@ class CategoryViewModel with ChangeNotifier {
 
   void fetchCategories() async {
     _setFetchingData(true);
-    notifyListeners();
     var response = await api.fetchCategories();
     _categories = response['active'];
     _setFetchingData(false);
-    notifyListeners();
   }
 }

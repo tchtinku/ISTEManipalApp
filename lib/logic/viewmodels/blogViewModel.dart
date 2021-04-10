@@ -3,7 +3,8 @@ import 'package:istemanipalapp/logic/models/Blog.dart';
 import 'package:istemanipalapp/services/dialogService.dart';
 import 'package:istemanipalapp/services/locator.dart';
 import 'package:istemanipalapp/services/blogApi.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:istemanipalapp/services/navigationService.dart';
+import '../../consts/routes.dart' as routes;
 
 class BlogViewModel with ChangeNotifier {
   BlogViewModel();
@@ -55,6 +56,7 @@ class BlogViewModel with ChangeNotifier {
   }
 
   void launchUrl(url) async {
-    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+    // await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+    locator<NavigationService>().navigateTo(routes.WEBVIEW, arguments: url);
   }
 }
