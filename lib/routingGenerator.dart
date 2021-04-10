@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
 import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
+import 'package:istemanipalapp/UI/screens/categoryScreen.dart';
 import 'package:istemanipalapp/main.dart';
 import './consts/routes.dart' as routes;
 
@@ -20,6 +21,10 @@ class RouteGenerator {
       case routes.LOGIN:
         return MaterialPageRoute(
           builder: (_) => LoginScreen(),
+        );
+      case routes.EVENTS:
+        return MaterialPageRoute(
+          builder: (_) => CategoryScreen(),
         );
       default:
         // If there is no such named route in the switch statement, e.g. /third

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/screens/UserScreen.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
+import 'package:istemanipalapp/UI/screens/categoryScreen.dart';
 import 'package:istemanipalapp/routingGenerator.dart';
 import 'package:istemanipalapp/services/locator.dart';
 import 'package:istemanipalapp/services/navigationService.dart';
@@ -9,7 +10,6 @@ import 'package:provider/provider.dart';
 import './services/themeManager.dart';
 import './consts/routes.dart' as routes;
 import 'logic/viewmodels/authViewModel.dart';
-import 'logic/viewmodels/blogViewModel.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
           initialRoute: routes.HOME,
-          onGenerateRoute: RouteGenerator.generateRoute,
+          routes: {routes.HOME: (_) => Home()},
         ),
       ),
     );
@@ -57,7 +57,9 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person), label: "User Info")
+              icon: Icon(CupertinoIcons.person), label: "User Info"),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.calendar), label: "Events")
         ]),
         tabBuilder: (context, index) {
           switch (index) {
@@ -69,6 +71,10 @@ class _HomeState extends State<Home> {
             case 1:
               return CupertinoTabView(builder: (context) {
                 return CupertinoPageScaffold(child: UserScreen());
+              });
+            case 2:
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(child: CategoryScreen());
               });
               break;
             default:
