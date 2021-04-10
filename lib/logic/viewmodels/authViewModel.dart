@@ -105,6 +105,6 @@ class AuthViewModel with ChangeNotifier {
 
   void logOut() async {
     _setStatus(Status.Unauthenticated);
-    storage.deleteAllData();
+    storage.deleteAllUserData();
   }
 }

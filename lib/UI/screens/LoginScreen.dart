@@ -67,27 +67,25 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.blue, fontSize: 15),
                 ),
               ),
-              Container(
-                height: 50,
-                width: 250,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(20)),
-                child: TextButton(
-                  onPressed: () {
-                    viewModel.login(
-                        _usernameController.text, _passwordController.text);
-                  },
-                  child: !viewModel.isFetchingData
-                      ? Text(
+              !viewModel.isFetchingData
+                  ? Container(
+                      height: 50,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: TextButton(
+                        onPressed: () {
+                          viewModel.login(_usernameController.text,
+                              _passwordController.text);
+                        },
+                        child: Text(
                           'Login',
                           style: TextStyle(color: Colors.white, fontSize: 25),
-                        )
-                      : SpinnerWidget(
-                          color: Colors.white,
                         ),
-                ),
-              ),
+                      ),
+                    )
+                  : SpinnerWidget(),
               SizedBox(
                 height: 130,
               ),

@@ -83,12 +83,20 @@ class Api {
   Future<dynamic> fetchCategories() async {
     final url = baseUrl + "api/category";
 
+    http.Response resp;
     try {
-      http.Response resp = await http.get(url);
-
-      Map mappedResponse = jsonDecode(resp.body);
-      return mappedResponse;
+      resp = await http.get(url);
     } catch (e) {
+      return networkError;
+    }
+    if (resp.statusCode == 200) {
+      Map mappedResponse = jsonDecode(resp.body);
+      var categoryData = {
+        'success': true,
+        'categories': mappedResponse['active']
+      };
+      return categoryData;
+    } else {
       return networkError;
     }
   }

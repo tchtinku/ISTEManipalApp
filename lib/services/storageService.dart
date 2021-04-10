@@ -16,8 +16,12 @@ class StorageService {
     return tokenAndUser;
   }
 
-  Future<void> deleteAllData() async {
-    await storage.deleteAll();
+  Future<void> deleteAllUserData() async {
+    await storage.delete(key: "token");
+    await storage.delete(key: "username");
+    await storage.delete(key: "email");
+    await storage.delete(key: "first_name");
+    await storage.delete(key: "last_name");
   }
 
   //for storing theme related info

@@ -18,9 +18,7 @@ class CategoryScreen extends StatelessWidget {
             title: Text("Events Currently Active"),
           ),
           body: viewModel.isFetchingData
-              ? SpinnerWidget(
-                  color: Colors.white,
-                )
+              ? SpinnerWidget()
               : ListView.separated(
                   padding: const EdgeInsets.all(8),
                   itemCount: viewModel.categories.length,

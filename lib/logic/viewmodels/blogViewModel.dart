@@ -50,7 +50,7 @@ class BlogViewModel with ChangeNotifier {
       _setBlogs(blogData['posts']);
       _setFetchingData(false);
     } else {
-      locator<DialogService>().showAlertDialog('Error', blogData['error']);
+      locator<DialogService>().showAlertDialog('Error', blogData['message']);
       _setFetchingData(false);
     }
   }

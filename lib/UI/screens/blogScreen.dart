@@ -18,9 +18,7 @@ class BlogScreen extends StatelessWidget {
             title: Text("Blog"),
           ),
           body: viewModel.isFetchingData
-              ? SpinnerWidget(
-                  color: Colors.blue,
-                )
+              ? SpinnerWidget()
               : ListView.separated(
                   padding: const EdgeInsets.all(8),
                   itemCount: viewModel.blogs.length,

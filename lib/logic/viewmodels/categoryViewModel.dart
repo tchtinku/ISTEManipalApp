@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:istemanipalapp/services/dialogService.dart';
 
 import 'package:istemanipalapp/services/locator.dart';
 
@@ -28,8 +29,13 @@ class CategoryViewModel with ChangeNotifier {
 
   void fetchCategories() async {
     _setFetchingData(true);
-    var response = await api.fetchCategories();
-    _categories = response['active'];
+    var categoryData = await api.fetchCategories();
+    if (categoryData['success'] == true) {
+      _categories = categoryData['active'];
+    } else {
+      locator<DialogService>()
+          .showAlertDialog('Error', categoryData['message']);
+    }
     _setFetchingData(false);
   }
 }
