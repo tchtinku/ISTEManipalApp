@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:istemanipalapp/UI/widgets/events/EventListWidget.dart';
+import 'package:istemanipalapp/UI/widgets/events/EventDateListWidget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EventWidget extends StatelessWidget {
@@ -30,7 +30,7 @@ class EventWidget extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        this.eventDateList.length == 0
+        this.eventDateList.length > 0
             ? EventDateListWidget(eventDateSet: this.eventDateList)
             : Container(),
         this.registrationLink != null

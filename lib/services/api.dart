@@ -87,8 +87,6 @@ class Api {
       http.Response resp = await http.get(url);
 
       Map mappedResponse = jsonDecode(resp.body);
-      print(mappedResponse);
-
       return mappedResponse;
     } catch (e) {
       return networkError;

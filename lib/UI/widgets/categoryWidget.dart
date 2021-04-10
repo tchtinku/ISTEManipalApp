@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:istemanipalapp/consts/routes.dart';
 import 'package:istemanipalapp/consts/urls.dart';
 import 'package:istemanipalapp/logic/models/Date.dart';
+import 'package:istemanipalapp/services/locator.dart';
+import 'package:istemanipalapp/services/navigationService.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String name;
@@ -12,8 +15,12 @@ class CategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var navigator = locator<NavigationService>();
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        navigator.navigateTo(EVENTS,
+            arguments: {'events': events, 'category_name': name});
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
 import 'package:istemanipalapp/UI/screens/UserScreen.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
 import 'package:istemanipalapp/UI/screens/categoryScreen.dart';
+import 'package:istemanipalapp/UI/screens/eventsScreeen.dart';
+import 'package:istemanipalapp/UI/widgets/events/EventWidget.dart';
 import 'package:istemanipalapp/routingGenerator.dart';
 import 'package:istemanipalapp/services/locator.dart';
 import 'package:istemanipalapp/services/navigationService.dart';
@@ -35,7 +38,10 @@ class MyApp extends StatelessWidget {
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
           initialRoute: routes.HOME,
-          routes: {routes.HOME: (_) => Home()},
+          routes: {
+            routes.HOME: (_) => Home(),
+            routes.EVENTS: (_) => EventScreen()
+          },
         ),
       ),
     );
@@ -57,29 +63,39 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person), label: "User Info"),
+              icon: Icon(CupertinoIcons.calendar), label: "Events"),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.calendar), label: "Events")
+              icon: Icon(CupertinoIcons.person), label: "User Info"),
         ]),
         tabBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return CupertinoTabView(builder: (context) {
-                return CupertinoPageScaffold(child: BlogScreen());
-              });
-              break;
-            case 1:
-              return CupertinoTabView(builder: (context) {
-                return CupertinoPageScaffold(child: UserScreen());
-              });
-            case 2:
-              return CupertinoTabView(builder: (context) {
-                return CupertinoPageScaffold(child: CategoryScreen());
-              });
-              break;
-            default:
-              return const CupertinoTabView();
-          }
+          List<Widget> _widgetList = [
+            BlogScreen(),
+            CategoryScreen(),
+            LoginScreen()
+          ];
+          // switch (index) {
+          //   case 0:
+          //     return CupertinoTabView(builder: (context) {
+          //       return CupertinoPageScaffold(child: BlogScreen());
+          //     });
+          //     break;
+          //   case 1:
+          //     return CupertinoTabView(builder: (context) {
+          //       return CupertinoPageScaffold(child: CategoryScreen());
+          //     });
+
+          //   case 2:
+          //     return CupertinoTabView(builder: (context) {
+          //       return CupertinoPageScaffold(child: UserScreen());
+          //     });
+
+          //     break;
+          //   default:
+          //     return const CupertinoTabView();
+          // }
+          return CupertinoTabView(builder: (context) {
+            return CupertinoPageScaffold(child: _widgetList[index]);
+          });
         });
   }
 }

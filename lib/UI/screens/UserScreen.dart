@@ -27,19 +27,19 @@ class UserScreen extends StatelessWidget {
                   Text(viewModel.user.firstName),
                   Text("username: ${viewModel.user.username}"),
                   Text("token: ${viewModel.token}"),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       locator<ThemeManager>().toggleLightAndDark();
                     },
                     child: Text("Change Theme"),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       viewModel.logOut();
                     },
                     child: Text("Logout"),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       locator<NavigationService>().navigateTo(routes.LOGIN);
                     },

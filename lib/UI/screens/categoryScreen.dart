@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:istemanipalapp/UI/widgets/SpinnerWidget.dart';
 import 'package:istemanipalapp/UI/widgets/categoryWidget.dart';
 import 'package:istemanipalapp/logic/models/Date.dart';
 import 'package:istemanipalapp/logic/viewmodels/categoryViewModel.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/cupertino.dart';
 class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // var viewModel = Provider.of<BlogViewModel>(context, listen: true);
     return ChangeNotifierProvider<CategoryViewModel>(
       create: (context) => locator<CategoryViewModel>(),
       child: Consumer<CategoryViewModel>(
@@ -18,13 +18,14 @@ class CategoryScreen extends StatelessWidget {
             title: Text("Events Currently Active"),
           ),
           body: viewModel.isFetchingData
-              ? CircularProgressIndicator()
+              ? SpinnerWidget(
+                  color: Colors.white,
+                )
               : ListView.separated(
                   padding: const EdgeInsets.all(8),
                   itemCount: viewModel.categories.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      color: Colors.white,
                       child: CategoryWidget(
                           events: viewModel.categories[index]['events'],
                           name: viewModel.categories[index]['name'],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/widgets/events/EventWidget.dart';
 
-class EventList extends StatelessWidget {
+class EventScreen extends StatelessWidget {
   Widget renderBody(Map details) {
     List<EventWidget> events = [];
     for (var event in details['events']) {
@@ -20,7 +20,6 @@ class EventList extends StatelessWidget {
       itemCount: events.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          color: Colors.white,
           child: events[index],
         );
       },
