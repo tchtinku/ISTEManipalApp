@@ -12,7 +12,7 @@ class StorageService {
 
   Future<dynamic> getTokenAndUser() async {
     Map<String, String> tokenAndUser = await storage.readAll();
-    print(tokenAndUser);
+    print("Token and user: " + tokenAndUser.toString()); //TODO: Remove
     return tokenAndUser;
   }
 

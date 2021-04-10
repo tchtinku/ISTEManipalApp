@@ -1,8 +1,10 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:istemanipalapp/consts/urls.dart';
+
 class BlogApi {
-  final String url = "https://blog.istemanipal.com/mobile/";
+  final String url = BASE_BLOG_URL;
   var networkError = {
     'success': false,
     'error': "Network Error.",
@@ -12,9 +14,9 @@ class BlogApi {
 
   //for registering users
   Future<dynamic> fetchBlogs(page, size) async {
-    //todo: implement pagination later
+    //TODO: implement pagination later
     // final apiUrl = url + 'blogPosts?page=$page?&size=$size';
-    final apiUrl = url + 'blogPosts';
+    final apiUrl = url + '/mobile/blogPosts';
     var response;
     try {
       response = await http.get(apiUrl);

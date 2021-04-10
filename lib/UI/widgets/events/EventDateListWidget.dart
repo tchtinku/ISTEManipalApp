@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:istemanipalapp/logic/models/Date.dart';
+import 'package:istemanipalapp/logic/models/EventDate.dart';
 
 class EventDateListWidget extends StatelessWidget {
-  final List eventDateSet;
+  final List<EventDate> eventDateSet;
   EventDateListWidget({this.eventDateSet});
   @override
   Widget build(BuildContext context) {
@@ -23,13 +24,13 @@ class EventDateListWidget extends StatelessWidget {
 
     //Add the rows
     for (var eventDate in eventDateSet) {
-      Date startDate = Date(eventDate['start_date']);
+      Date startDate = eventDate.startDate;
       Date endDate;
-      if (eventDate['end_date'] != null) {
-        endDate = Date(eventDate['end_date']);
+      if (eventDate.endDate != null) {
+        endDate = eventDate.endDate;
       }
       table.children.add(TableRow(children: [
-        TableCell(child: Text(eventDate['venue'])),
+        TableCell(child: Text(eventDate.venue)),
         TableCell(
           child: Text(startDate.date + " " + startDate.month),
         ),

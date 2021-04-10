@@ -4,9 +4,7 @@ import 'package:istemanipalapp/UI/widgets/SpinnerWidget.dart';
 import 'package:istemanipalapp/logic/viewmodels/authViewModel.dart';
 import 'package:istemanipalapp/services/dialogService.dart';
 import 'package:istemanipalapp/services/locator.dart';
-import 'package:istemanipalapp/services/navigationService.dart';
 import 'package:provider/provider.dart';
-import '../../consts/routes.dart' as routes;
 
 class LoginScreen extends StatelessWidget {
   final _usernameController = TextEditingController();
@@ -33,9 +31,9 @@ class LoginScreen extends StatelessWidget {
                       )),
                 ),
               ),
-              (viewModel.status == Status.Authenticated)
-                  ? Text('logged in')
-                  : Text('Logged out'), // TODO: remove later,
+              // (viewModel.status == Status.Authenticated)
+              //     ? Text('logged in')
+              //     : Text('Logged out'), // TODO: Remove,
               Padding(
                 //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
                 padding: EdgeInsets.symmetric(horizontal: 15),
@@ -98,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                   'New user? Register here.',
                   style: TextStyle(color: Colors.blue, fontSize: 15),
                 ),
-              ), //TODO: Not visible on screen
+              ),
             ],
           ),
         ),

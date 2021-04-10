@@ -32,12 +32,6 @@ class MyApp extends StatelessWidget {
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
           initialRoute: routes.HOME,
-          // routes: {
-          //   routes.HOME: (_) => Home(),
-          //   routes.EVENTS: (_) => EventScreen(),
-          //   routes.LOGIN: (_) => LoginScreen(),
-          //   routes.BLOG: (_) => BlogScreen(),
-          // },
           onGenerateRoute: RouteGenerator.generateRoute,
         ),
       ),

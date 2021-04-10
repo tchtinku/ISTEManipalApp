@@ -57,6 +57,7 @@ class BlogViewModel with ChangeNotifier {
 
   void launchUrl(url) async {
     // await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
-    locator<NavigationService>().navigateTo(routes.WEBVIEW, arguments: url);
+    locator<NavigationService>()
+        .navigateTo(routes.WEBVIEW, arguments: {'url': url});
   }
 }

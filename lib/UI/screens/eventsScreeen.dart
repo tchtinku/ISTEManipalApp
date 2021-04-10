@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/widgets/events/EventWidget.dart';
+import 'package:istemanipalapp/logic/models/Event.dart';
 
 class EventScreen extends StatelessWidget {
-  Widget renderBody(Map details) {
-    List<EventWidget> events = [];
-    for (var event in details['events']) {
-      EventWidget eventWidget = EventWidget(
-        name: event['name'],
-        description: event['description'],
-        eventDateList: event['event_date_set'],
-        registrationLink: event['registration_link'],
-      );
+  final List<Event> events;
+  final String categoryName;
 
-      events.add(eventWidget);
-    }
-
+  EventScreen({this.events, this.categoryName});
+  Widget renderBody() {
     return ListView.separated(
       padding: const EdgeInsets.all(8),
       itemCount: events.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          child: events[index],
+          child: EventWidget(
+            description: events[index].description,
+            eventDateList: events[index].eventDateSet,
+            name: events[index].name,
+            registrationLink: events[index].registrationLink,
+          ),
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -29,10 +27,9 @@ class EventScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map details = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(title: Text(details['category_name'])),
-      body: this.renderBody(details),
+      appBar: AppBar(title: Text(this.categoryName)),
+      body: this.renderBody(),
     );
   }
 }

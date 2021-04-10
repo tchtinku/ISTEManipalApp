@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:istemanipalapp/logic/models/Category.dart';
 import 'package:istemanipalapp/services/dialogService.dart';
 
 import 'package:istemanipalapp/services/locator.dart';
@@ -10,11 +11,11 @@ class CategoryViewModel with ChangeNotifier {
   //making instace of web api and storage services to use their function
   var api = locator<Api>();
 
-  List _categories;
+  List<Category> _categories = [];
   bool _isFetchingData = false;
 
   //getters
-  List get categories => _categories;
+  List<Category> get categories => _categories;
   bool get isFetchingData => _isFetchingData;
 
   //setters
@@ -28,10 +29,13 @@ class CategoryViewModel with ChangeNotifier {
   }
 
   void fetchCategories() async {
+    print('Yes it is fetching');
     _setFetchingData(true);
     var categoryData = await api.fetchCategories();
     if (categoryData['success'] == true) {
-      _categories = categoryData['active'];
+      for (var category in categoryData['categories']) {
+        _categories.add(Category.fromJson(category));
+      }
     } else {
       locator<DialogService>()
           .showAlertDialog('Error', categoryData['message']);

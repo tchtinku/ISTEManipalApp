@@ -1,8 +1,10 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:istemanipalapp/consts/urls.dart';
+
 class Api {
-  final String baseUrl = "https://test.istemanipal.com/";
+  final String baseUrl = BASE_URL;
   var networkError = {
     'success': false,
     'error': "Network Error.",
@@ -13,7 +15,7 @@ class Api {
   //for registering users
   Future<dynamic> registerUser(
       username, email, firstName, lastName, password, password2) async {
-    final apiUrl = baseUrl + 'api/register';
+    final apiUrl = baseUrl + '/api/register';
     var response, responseStatus;
     try {
       response = await http.post(apiUrl, body: {
@@ -36,7 +38,7 @@ class Api {
       };
       return userData;
     } else {
-      print(response.body);
+      print(response.body); //TODO: Remove
       var error = {
         'success': false,
         'error': json.decode(response.body)['errors'],
@@ -47,13 +49,17 @@ class Api {
 
   //for login user
   Future<dynamic> loginUser(username, password) async {
-    final apiUrl = baseUrl + 'api/login';
+    final apiUrl = baseUrl + '/api/login';
     var response, responseStatus;
+    if (username.length == 0 || password.length == 0) {
+      return {'success': false, 'error': 'Enter both username and password'};
+    }
     try {
       response = await http.post(apiUrl, body: {
         'username': username,
         'password': password,
       });
+      print(response.body); //TODO: Remove
       responseStatus = json.decode(response.body)['status'];
     } catch (e) {
       return networkError;
@@ -71,7 +77,7 @@ class Api {
       };
       return userData;
     } else {
-      print(response.body);
+      print(response.body); //TODO: Remove
       var error = {
         'success': false,
         'error': "Your username or password is incorrect. Could not login.",
@@ -81,7 +87,7 @@ class Api {
   }
 
   Future<dynamic> fetchCategories() async {
-    final url = baseUrl + "api/category";
+    final url = baseUrl + "/api/category";
 
     http.Response resp;
     try {
@@ -89,15 +95,12 @@ class Api {
     } catch (e) {
       return networkError;
     }
-    if (resp.statusCode == 200) {
-      Map mappedResponse = jsonDecode(resp.body);
-      var categoryData = {
-        'success': true,
-        'categories': mappedResponse['active']
-      };
-      return categoryData;
-    } else {
-      return networkError;
-    }
+
+    Map mappedResponse = jsonDecode(resp.body);
+    var categoryData = {
+      'success': true,
+      'categories': mappedResponse['active']
+    };
+    return categoryData;
   }
 }

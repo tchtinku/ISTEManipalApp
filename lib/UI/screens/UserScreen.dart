@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
 import 'package:istemanipalapp/logic/viewmodels/authViewModel.dart';
 import 'package:istemanipalapp/services/locator.dart';
-import 'package:istemanipalapp/services/navigationService.dart';
+
 import 'package:istemanipalapp/services/themeManager.dart';
 import 'package:provider/provider.dart';
-import '../../consts/routes.dart' as routes;
 
 class UserScreen extends StatelessWidget {
   @override
@@ -39,12 +38,12 @@ class UserScreen extends StatelessWidget {
                     },
                     child: Text("Logout"),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      locator<NavigationService>().navigateTo(routes.LOGIN);
-                    },
-                    child: Text("Login"),
-                  ),
+                  // TextButton(
+                  //   onPressed: () {
+                  //     locator<NavigationService>().navigateTo(routes.LOGIN);
+                  //   },
+                  //   child: Text("Login"),
+                  // ),
                 ],
               ),
             )
