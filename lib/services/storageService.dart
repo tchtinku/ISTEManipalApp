@@ -12,7 +12,6 @@ class StorageService {
 
   Future<dynamic> getTokenAndUser() async {
     Map<String, String> tokenAndUser = await storage.readAll();
-    print("Token and user: " + tokenAndUser.toString()); //TODO: Remove
     return tokenAndUser;
   }
 

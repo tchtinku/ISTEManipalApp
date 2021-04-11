@@ -55,10 +55,8 @@ class AuthViewModel with ChangeNotifier {
   void checkLogIn() async {
     final tokenAndUser = await storage.getTokenAndUser();
     if (tokenAndUser['token'] == null) {
-      print("token not found"); //TODO: Remove
       _setStatus(Status.Unauthenticated);
     } else {
-      print("user already authenticated"); //TODO: Remove
       _setToken(tokenAndUser['token']);
 
       var user = {

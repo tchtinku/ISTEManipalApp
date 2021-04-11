@@ -5,3 +5,6 @@ const String REGISTER = '/register';
 const String EVENTS = '/events';
 const String WEBVIEW = '/webview';
 const String INTERVIEWQUESTIONS = '/interviewQuestions';
+const String USER = '/user';
+const String ANSWERSUBMIT = '/answerSubmit';
+const String CATEOGRY = '/category';

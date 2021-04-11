@@ -38,12 +38,6 @@ class UserScreen extends StatelessWidget {
                     },
                     child: Text("Logout"),
                   ),
-                  // TextButton(
-                  //   onPressed: () {
-                  //     locator<NavigationService>().navigateTo(routes.LOGIN);
-                  //   },
-                  //   child: Text("Login"),
-                  // ),
                 ],
               ),
             )

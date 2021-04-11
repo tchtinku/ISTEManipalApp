@@ -35,6 +35,7 @@ dependencies:
   cached_network_image:
   url_launcher:
   webview_flutter:
+  persistent_bottom_nav_bar:
   
 
 dev_dependencies:

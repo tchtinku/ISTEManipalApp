@@ -38,7 +38,6 @@ class Api {
       };
       return userData;
     } else {
-      print(response.body); //TODO: Remove
       var error = {
         'success': false,
         'error': json.decode(response.body)['errors'],
@@ -59,7 +58,6 @@ class Api {
         'username': username,
         'password': password,
       });
-      print(response.body); //TODO: Remove
       responseStatus = json.decode(response.body)['status'];
     } catch (e) {
       return networkError;
@@ -77,7 +75,6 @@ class Api {
       };
       return userData;
     } else {
-      print(response.body); //TODO: Remove
       var error = {
         'success': false,
         'error': "Your username or password is incorrect. Could not login.",

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<ThemeData>(
         builder: (context, theme, child) => MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Lumus',
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
           initialRoute: routes.HOME,

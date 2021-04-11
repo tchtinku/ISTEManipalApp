@@ -18,7 +18,7 @@ class CategoryWidget extends StatelessWidget {
     var navigator = locator<NavigationService>();
     return GestureDetector(
       onTap: () {
-        navigator.navigateTo(EVENTS,
+        navigator.navigateWithContext(EVENTS, context,
             arguments: {'events': events, 'category_name': name});
       },
       child: Row(
