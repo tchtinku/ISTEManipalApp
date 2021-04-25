@@ -5,6 +5,8 @@ import 'package:istemanipalapp/consts/urls.dart';
 
 class Api {
   final String baseUrl = BASE_URL;
+
+  //Errors
   var networkError = {
     'success': false,
     'error': "Network Error.",
@@ -12,6 +14,14 @@ class Api {
         "Some kind of network error occurred. Cannot send requests. Check your network and if the problem persists then probably the server isn't responding."
   };
 
+  var authError = {
+    'success': false,
+    'error': 'User not logged in.',
+    'message':
+        "User not logged in. Please login and try again. Remember that this feature is for members only. If you're not a member yet you need to register first.",
+  };
+
+  //Http calls
   //for registering users
   Future<dynamic> registerUser(
       username, email, firstName, lastName, password, password2) async {
@@ -83,6 +93,7 @@ class Api {
     }
   }
 
+  //To fetch all categories
   Future<dynamic> fetchCategories() async {
     final url = baseUrl + "/api/category";
 
@@ -99,5 +110,87 @@ class Api {
       'categories': mappedResponse['active']
     };
     return categoryData;
+  }
+
+  //To fetch all questions
+  Future<dynamic> fetchQuestions(headers) async {
+    final url = baseUrl + "/api/interview/questions";
+    http.Response resp;
+    try {
+      resp = await http.get(url, headers: {'Authorization': headers});
+    } catch (e) {
+      return networkError;
+    }
+
+    Map mappedResponse = jsonDecode(resp.body);
+    if (mappedResponse['detail'] != null) {
+      print('Auth error');
+      return authError;
+    }
+
+    print('successful');
+    var questionData = {
+      'success': true,
+      'questions': mappedResponse['questions'],
+    };
+    return questionData;
+  }
+
+  //To submit answer to a question
+  Future<dynamic> submitAnswer(headers, answer, questionKey) async {
+    final url = baseUrl + "/api/interview/submit";
+    http.Response resp;
+    try {
+      resp = await http.post(url, body: {
+        'answer': answer.toString(),
+        'pk': questionKey.toString(),
+      }, headers: {
+        'Authorization': headers
+      });
+    } catch (e) {
+      print(e);
+      return networkError;
+    }
+
+    Map mappedResponse = jsonDecode(resp.body);
+    if (mappedResponse['detail'] != null) {
+      print('Auth error');
+      return authError;
+    }
+
+    if (mappedResponse['status'] == 'unsuccessful') {
+      var error = {
+        'success': false,
+        'error': mappedResponse['errors'],
+        'message':
+            "Some error occurred while submitting the response. Note that you cannot submit answer to the same question twice.",
+      };
+      return error;
+    }
+
+    print('successful');
+    var submitData = {
+      'success': true,
+      'message': "Thank you! Your response was submitted succesfully.",
+    };
+    return submitData;
+  }
+
+  //To get leaderboard of a question
+  Future<dynamic> fetchLeaderboard(questionKey) async {
+    final url = baseUrl + "/api/interview/leaderboard/$questionKey";
+    http.Response resp;
+    try {
+      resp = await http.get(url);
+    } catch (e) {
+      return networkError;
+    }
+
+    Map mappedResponse = jsonDecode(resp.body);
+    var leaderboardData = {
+      'success': true,
+      'leaderboard': mappedResponse['leaderboard'],
+    };
+    return leaderboardData;
   }
 }

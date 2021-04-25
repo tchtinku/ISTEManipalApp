@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:istemanipalapp/logic/viewmodels/authViewModel.dart';
 import 'package:istemanipalapp/logic/viewmodels/blogViewModel.dart';
 import 'package:istemanipalapp/logic/viewmodels/categoryViewModel.dart';
+import 'package:istemanipalapp/logic/viewmodels/interviewViewModel.dart';
 import 'package:istemanipalapp/services/api.dart';
 import 'package:istemanipalapp/services/blogApi.dart';
 import 'package:istemanipalapp/services/dialogService.dart';
@@ -24,4 +25,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => AuthViewModel.initialize());
   locator.registerLazySingleton(() => BlogViewModel.initialize());
   locator.registerLazySingleton(() => CategoryViewModel.initialize());
+  locator.registerLazySingleton(() => InterviewViewModel.initialize());
 }

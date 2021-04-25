@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
 import 'package:istemanipalapp/UI/screens/categoryScreen.dart';
+import 'package:istemanipalapp/UI/screens/interviewScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class Home extends StatefulWidget {
@@ -24,6 +25,7 @@ class _HomeState extends State<Home> {
   List<Widget> _buildScreens() {
     return [
       BlogScreen(),
+      InterviewScreen(),
       CategoryScreen(),
       LoginScreen(),
     ];
@@ -34,6 +36,12 @@ class _HomeState extends State<Home> {
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
         title: ("Blog"),
+        activeColorPrimary: Theme.of(context).accentColor,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.chevron_left_slash_chevron_right),
+        title: ("Questions"),
         activeColorPrimary: Theme.of(context).accentColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
@@ -83,7 +91,7 @@ class _HomeState extends State<Home> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style13, // Choose the nav bar style with this property.
+          NavBarStyle.style6, // Choose the nav bar style with this property.
     );
   }
 }

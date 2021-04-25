@@ -5,6 +5,9 @@ import 'package:istemanipalapp/UI/screens/blogScreen.dart';
 import 'package:istemanipalapp/UI/screens/categoryScreen.dart';
 import 'package:istemanipalapp/UI/screens/eventsScreeen.dart';
 import 'package:istemanipalapp/UI/screens/homeScreen.dart';
+import 'package:istemanipalapp/UI/screens/leaderboardScreen.dart';
+import 'package:istemanipalapp/UI/screens/questionScreen.dart';
+import 'package:istemanipalapp/UI/screens/questionSubmitScreen.dart';
 import 'package:istemanipalapp/UI/screens/webViewScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../consts/routes.dart' as routes;
@@ -27,15 +30,21 @@ class NavigationService {
       return UserScreen();
     } else if (name == routes.CATEOGRY) {
       return CategoryScreen();
+    } else if (name == routes.QUESTION) {
+      return QuestionScreen(
+        question: args,
+      );
+    } else if (name == routes.QUESTIONSUBMIT) {
+      return QuestionSubmitScreen(
+        question: args,
+      );
+    } else if (name == routes.LEADERBOARD) {
+      return LeaderboardScreen(
+        question: args,
+      );
     } else {
       return Home();
     }
-    // else if (name == routes.ANSWERSUBMIT) {
-    //   return
-    // }
-    // else if (name == routes.INTERVIEWQUESTIONS) {
-    //   return WebViewScreen(url: args['url']);
-    // }
     // else if (name == routes.REGISTER) {
     //   return WebViewScreen(url: args['url']);
     // }
