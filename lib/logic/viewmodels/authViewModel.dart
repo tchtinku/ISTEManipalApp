@@ -52,6 +52,11 @@ class AuthViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  setUserPoints(value) {
+    _user.points = value;
+    notifyListeners();
+  }
+
   void checkLogIn() async {
     final tokenAndUser = await storage.getTokenAndUser();
     if (tokenAndUser['token'] == null) {

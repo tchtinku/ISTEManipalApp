@@ -13,11 +13,13 @@ class InterviewViewModel with ChangeNotifier {
   String _headers;
 
   List<Question> _questions = [];
+  List<Question> _submittedQuestions = [];
   List<LeaderboardUser> _leaderboardUsers = [];
   bool _isFetchingData = false;
 
   //getters
   List<Question> get questions => _questions;
+  List<Question> get submittedQuestions => _submittedQuestions;
   List<LeaderboardUser> get leaderboardUsers => _leaderboardUsers;
   bool get isFetchingData => _isFetchingData;
 
@@ -33,13 +35,32 @@ class InterviewViewModel with ChangeNotifier {
   }
 
   _setQuestions(value) {
+    _questions = [];
     for (int i = 0; i < value.length; i++) {
       _questions.add(Question.fromJson(value[i]));
     }
     notifyListeners();
   }
 
+  _setSubmittedQuestions(value) {
+    _submittedQuestions = [];
+    double userPoints = 0;
+    for (int i = 0; i < value.length; i++) {
+      Question ques = Question.fromJson(value[i]['question']);
+      ques.userAnswer = value[i]['answer'];
+      ques.userPoints =
+          (value[i]['points'] == null) ? '0' : value[i]['points'].toString();
+
+      userPoints += double.parse(ques.userPoints);
+      _submittedQuestions.add(ques);
+    }
+
+    locator<AuthViewModel>().setUserPoints(userPoints);
+    notifyListeners();
+  }
+
   _setLeaderboardUsers(value) {
+    _leaderboardUsers = [];
     print(value);
     for (int i = 0; i < value.length; i++) {
       _leaderboardUsers.add(LeaderboardUser.fromJson(value[i]));
@@ -62,6 +83,20 @@ class InterviewViewModel with ChangeNotifier {
     } else {
       locator<DialogService>()
           .showAlertDialog(questionData['error'], questionData['message']);
+      _setFetchingData(false);
+    }
+  }
+
+  void fetchSubmittedQuestions() async {
+    _getHeaders();
+    _setFetchingData(true);
+    var submittedQuestionData = await _api.fetchSubmittedQuestions(_headers);
+    if (submittedQuestionData['success'] == true) {
+      _setSubmittedQuestions(submittedQuestionData['answers']);
+      _setFetchingData(false);
+    } else {
+      locator<DialogService>().showAlertDialog(
+          submittedQuestionData['error'], submittedQuestionData['message']);
       _setFetchingData(false);
     }
   }

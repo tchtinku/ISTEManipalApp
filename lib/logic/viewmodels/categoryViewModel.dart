@@ -30,6 +30,7 @@ class CategoryViewModel with ChangeNotifier {
 
   void fetchCategories() async {
     print('Yes it is fetching');
+    _categories = [];
     _setFetchingData(true);
     var categoryData = await api.fetchCategories();
     if (categoryData['success'] == true) {

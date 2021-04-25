@@ -193,4 +193,29 @@ class Api {
     };
     return leaderboardData;
   }
+
+  //To fetch all users submitted questions
+  Future<dynamic> fetchSubmittedQuestions(headers) async {
+    final url = baseUrl + "/api/interview/submitted";
+    http.Response resp;
+    try {
+      resp = await http.get(url, headers: {'Authorization': headers});
+    } catch (e) {
+      return networkError;
+    }
+
+    Map mappedResponse = jsonDecode(resp.body);
+    print(mappedResponse);
+    if (mappedResponse['detail'] != null) {
+      print('Auth error');
+      return authError;
+    }
+
+    print('successful');
+    var submittedQuestionsData = {
+      'success': true,
+      'answers': mappedResponse['answers'],
+    };
+    return submittedQuestionsData;
+  }
 }

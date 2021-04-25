@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:istemanipalapp/UI/screens/AnswerScreen.dart';
 import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
 import 'package:istemanipalapp/UI/screens/UserScreen.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
@@ -8,6 +9,7 @@ import 'package:istemanipalapp/UI/screens/homeScreen.dart';
 import 'package:istemanipalapp/UI/screens/leaderboardScreen.dart';
 import 'package:istemanipalapp/UI/screens/questionScreen.dart';
 import 'package:istemanipalapp/UI/screens/questionSubmitScreen.dart';
+import 'package:istemanipalapp/UI/screens/submittedQuestionScreen.dart';
 import 'package:istemanipalapp/UI/screens/webViewScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../consts/routes.dart' as routes;
@@ -40,6 +42,12 @@ class NavigationService {
       );
     } else if (name == routes.LEADERBOARD) {
       return LeaderboardScreen(
+        question: args,
+      );
+    } else if (name == routes.SUBMITTEDQUESTIONS) {
+      return SubmittedQuestionScreen();
+    } else if (name == routes.ANSWER) {
+      return AnswerScreen(
         question: args,
       );
     } else {
