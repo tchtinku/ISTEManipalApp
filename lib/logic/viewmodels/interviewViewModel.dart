@@ -34,6 +34,14 @@ class InterviewViewModel with ChangeNotifier {
     _headers = locator<AuthViewModel>().headers;
   }
 
+  _waitForHeadersAndFetchQuestions() async {
+    _setFetchingData(true);
+    await locator<AuthViewModel>().getTokenAndUser();
+    _setFetchingData(false);
+
+    fetchAllQuestions();
+  }
+
   _setQuestions(value) {
     _questions = [];
     for (int i = 0; i < value.length; i++) {
@@ -69,8 +77,7 @@ class InterviewViewModel with ChangeNotifier {
   }
 
   InterviewViewModel.initialize() {
-    _getHeaders();
-    fetchAllQuestions();
+    _waitForHeadersAndFetchQuestions();
   }
 
   void fetchAllQuestions() async {

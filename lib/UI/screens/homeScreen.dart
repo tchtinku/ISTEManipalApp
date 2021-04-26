@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style6, // Choose the nav bar style with this property.
+          NavBarStyle.style11, // Choose the nav bar style with this property.
     );
   }
 }

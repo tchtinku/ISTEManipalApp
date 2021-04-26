@@ -57,8 +57,12 @@ class AuthViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<dynamic> getTokenAndUser() async {
+    return await storage.getTokenAndUser();
+  }
+
   void checkLogIn() async {
-    final tokenAndUser = await storage.getTokenAndUser();
+    final tokenAndUser = await getTokenAndUser();
     if (tokenAndUser['token'] == null) {
       _setStatus(Status.Unauthenticated);
     } else {
