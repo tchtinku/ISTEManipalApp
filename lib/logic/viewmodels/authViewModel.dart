@@ -52,8 +52,17 @@ class AuthViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  setUserPoints(value) {
+    _user.points = value;
+    notifyListeners();
+  }
+
+  Future<dynamic> getTokenAndUser() async {
+    return await storage.getTokenAndUser();
+  }
+
   void checkLogIn() async {
-    final tokenAndUser = await storage.getTokenAndUser();
+    final tokenAndUser = await getTokenAndUser();
     if (tokenAndUser['token'] == null) {
       _setStatus(Status.Unauthenticated);
     } else {
@@ -103,6 +112,7 @@ class AuthViewModel with ChangeNotifier {
 
   void logOut() async {
     _setStatus(Status.Unauthenticated);
+    _setToken("");
     storage.deleteAllUserData();
   }
 }

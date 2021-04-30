@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:istemanipalapp/logic/viewmodels/interviewViewModel.dart';
 import 'package:istemanipalapp/routingGenerator.dart';
 import 'package:istemanipalapp/services/locator.dart';
 import 'package:istemanipalapp/services/navigationService.dart';
@@ -26,10 +27,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: locator<AuthViewModel>(),
         ),
+        ChangeNotifierProvider.value(
+          value: locator<InterviewViewModel>(),
+        ),
       ],
       child: Consumer<ThemeData>(
         builder: (context, theme, child) => MaterialApp(
-          title: 'Lumus',
+          title: 'Lumos',
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
           initialRoute: routes.HOME,
