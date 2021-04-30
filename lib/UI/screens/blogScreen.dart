@@ -14,9 +14,22 @@ class BlogScreen extends StatelessWidget {
       create: (context) => locator<BlogViewModel>(),
       child: Consumer<BlogViewModel>(
         builder: (context, viewModel, child) => Scaffold(
-          appBar: AppBar(
-            title: Text("Blog"),
-          ),
+          // appBar: AppBar(
+          //   backgroundColor: Colors.grey[200],
+          //   title: Container(
+          //       decoration: BoxDecoration(color: Colors.grey[200]),
+          //       child: Text(
+          //         "Blog",
+          //         style: TextStyle(color: Colors.black),
+          //       )),
+          //   actions: [
+          //     Icon(
+          //       Icons.more_vert,
+          //       color: Colors.black,
+          //     )
+          //   ],
+          // ),
+
           body: viewModel.isFetchingData
               ? SpinnerWidget()
               : ListView.separated(
