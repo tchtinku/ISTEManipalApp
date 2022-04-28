@@ -17,7 +17,7 @@ class BlogApi {
     final apiUrl = url + 'blogPosts';
     var response;
     try {
-      response = await http.get(apiUrl);
+      response = await http.get(Uri.parse(apiUrl));
     } catch (e) {
       return networkError;
     }

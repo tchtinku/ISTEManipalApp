@@ -23,22 +23,23 @@ class BlogsCard extends StatelessWidget {
         child: Container(
           color: Theme.of(context).cardColor,
           width: MediaQuery.of(context).size.width * 0.8,
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ClipRRect(
                 child: CachedNetworkImage(
-                  width: 100.0,
-                  height: 100.0,
+                  width: 150.0,
+                  height: 150.0,
                   imageUrl: blog.imageUrl,
                   progressIndicatorBuilder: (context, url, progress) =>
                       CircularProgressIndicator(value: progress.progress),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
-                borderRadius: BorderRadius.circular(50),
+                // borderRadius: BorderRadius.circular(0),
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(

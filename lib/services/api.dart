@@ -16,7 +16,7 @@ class Api {
     final apiUrl = baseUrl + 'api/register';
     var response, responseStatus;
     try {
-      response = await http.post(apiUrl, body: {
+      response = await http.post(Uri.parse(apiUrl), body: {
         'username': username,
         'email': email,
         'first_name': firstName,
@@ -50,7 +50,7 @@ class Api {
     final apiUrl = baseUrl + 'api/login';
     var response, responseStatus;
     try {
-      response = await http.post(apiUrl, body: {
+      response = await http.post(Uri.parse(apiUrl), body: {
         'username': username,
         'password': password,
       });
@@ -84,7 +84,7 @@ class Api {
     final url = baseUrl + "api/category";
 
     try {
-      http.Response resp = await http.get(url);
+      http.Response resp = await http.get(Uri.parse(url));
 
       Map mappedResponse = jsonDecode(resp.body);
       return mappedResponse;
