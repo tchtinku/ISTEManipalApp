@@ -34,27 +34,28 @@ class _HomeState extends State<Home> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.doc),
+        title: ("_____"),
+        activeColorPrimary: Colors.blueAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.square_grid_4x3_fill),
+        //ImageIcon(AssetImage("assets/Icons/medal.png"),size: 100,),
+        title: ("_____"),
+        activeColorPrimary: Colors.blueAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.airplay_outlined),
+        title: ("_____"),
+        activeColorPrimary: Colors.blueAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ("Blog"),
-        activeColorPrimary: Theme.of(context).accentColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.chevron_left_slash_chevron_right),
-        title: ("Questions"),
-        activeColorPrimary: Theme.of(context).accentColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.calendar),
-        title: ("Events"),
-        activeColorPrimary: Theme.of(context).accentColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.person),
-        title: ("Profile"),
-        activeColorPrimary: Theme.of(context).accentColor,
+        title: ("_____"),
+        activeColorPrimary: Colors.blueAccent,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
     ];
@@ -68,8 +69,8 @@ class _HomeState extends State<Home> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor:
-          Theme.of(context).bottomAppBarColor, // Default is Colors.white.
+      backgroundColor:Colors.black87,
+
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -91,7 +92,7 @@ class _HomeState extends State<Home> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style11, // Choose the nav bar style with this property.
+          NavBarStyle.style13, // Choose the nav bar style with this property.
     );
   }
 }
