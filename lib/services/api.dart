@@ -11,14 +11,14 @@ class Api {
     'success': false,
     'error': "Network Error.",
     'message':
-        "Some kind of network error occurred. Cannot send requests. Check your network and if the problem persists then probably the server isn't responding."
+    "Some kind of network error occurred. Cannot send requests. Check your network and if the problem persists then probably the server isn't responding."
   };
 
   var authError = {
     'success': false,
     'error': 'User not logged in.',
     'message':
-        "User not logged in. Please login and try again. Remember that this feature is for members only. If you're not a member yet you need to register first.",
+    "User not logged in. Please login and try again. Remember that this feature is for members only. If you're not a member yet you need to register first.",
   };
 
   //Http calls
@@ -28,7 +28,7 @@ class Api {
     final apiUrl = baseUrl + '/api/register';
     var response, responseStatus;
     try {
-      response = await http.post(apiUrl, body: {
+      response = await http.post(Uri.parse(apiUrl), body: {
         'username': username,
         'email': email,
         'first_name': firstName,
@@ -64,7 +64,7 @@ class Api {
       return {'success': false, 'error': 'Enter both username and password'};
     }
     try {
-      response = await http.post(apiUrl, body: {
+      response = await http.post(Uri.parse(apiUrl), body: {
         'username': username,
         'password': password,
       });
@@ -99,7 +99,7 @@ class Api {
 
     http.Response resp;
     try {
-      resp = await http.get(url);
+      resp = await http.get(Uri.parse(url));
     } catch (e) {
       return networkError;
     }
@@ -117,7 +117,7 @@ class Api {
     final url = baseUrl + "/api/interview/questions";
     http.Response resp;
     try {
-      resp = await http.get(url, headers: {'Authorization': headers});
+      resp = await http.get(Uri.parse(url), headers: {'Authorization': headers});
     } catch (e) {
       return networkError;
     }
@@ -141,7 +141,7 @@ class Api {
     final url = baseUrl + "/api/interview/submit";
     http.Response resp;
     try {
-      resp = await http.post(url, body: {
+      resp = await http.post(Uri.parse(url), body: {
         'answer': answer.toString(),
         'pk': questionKey.toString(),
       }, headers: {
@@ -163,7 +163,7 @@ class Api {
         'success': false,
         'error': mappedResponse['errors'],
         'message':
-            "Some error occurred while submitting the response. Note that you cannot submit answer to the same question twice.",
+        "Some error occurred while submitting the response. Note that you cannot submit answer to the same question twice.",
       };
       return error;
     }
@@ -181,7 +181,7 @@ class Api {
     final url = baseUrl + "/api/interview/leaderboard/$questionKey";
     http.Response resp;
     try {
-      resp = await http.get(url);
+      resp = await http.get(Uri.parse(url));
     } catch (e) {
       return networkError;
     }
@@ -199,7 +199,7 @@ class Api {
     final url = baseUrl + "/api/interview/submitted";
     http.Response resp;
     try {
-      resp = await http.get(url, headers: {'Authorization': headers});
+      resp = await http.get(Uri.parse(url), headers: {'Authorization': headers});
     } catch (e) {
       return networkError;
     }
