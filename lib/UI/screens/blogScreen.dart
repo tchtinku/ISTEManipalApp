@@ -33,7 +33,7 @@ class BlogScreen extends StatelessWidget {
           body: viewModel.isFetchingData
               ? SpinnerWidget()
               : ListView.separated(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(2),
                   itemCount: viewModel.blogs.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(

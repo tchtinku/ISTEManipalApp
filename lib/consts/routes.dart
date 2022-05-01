@@ -1,5 +1,6 @@
 const String BLOG = '/blog';
 const String HOME = '/';
+const String WELCOME ='/welcome';
 const String LOGIN = '/login';
 const String REGISTER = '/register';
 const String EVENTS = '/events';

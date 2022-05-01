@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:istemanipalapp/UI/screens/WelcomeScreen.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
 import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
 import 'package:istemanipalapp/UI/screens/eventsScreeen.dart';
@@ -11,6 +12,7 @@ class RouteGenerator {
     // Getting arguments passed in while calling Navigator.pushNamed
     Map args = settings.arguments;
     Map ROUTES = {
+      routes.WELCOME: MaterialPageRoute(builder: (_)=>WelcomeScreen()),
       routes.HOME: MaterialPageRoute(builder: (_) => Home()),
       routes.BLOG: MaterialPageRoute(
         builder: (_) => BlogScreen(),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:istemanipalapp/UI/screens/LoginScreen.dart';
+import 'package:istemanipalapp/UI/screens/UserScreen.dart';
 import 'package:istemanipalapp/UI/screens/blogScreen.dart';
 import 'package:istemanipalapp/UI/screens/categoryScreen.dart';
 import 'package:istemanipalapp/UI/screens/interviewScreen.dart';
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
       BlogScreen(),
       InterviewScreen(),
       CategoryScreen(),
-      LoginScreen(),
+      UserScreen(),
     ];
   }
 

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           title: 'Lumos',
           theme: theme,
           navigatorKey: locator<NavigationService>().navigatorKey,
-          initialRoute: routes.HOME,
+          initialRoute: routes.WELCOME,
           onGenerateRoute: RouteGenerator.generateRoute,
         ),
       ),
